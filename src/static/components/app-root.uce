@@ -1,0 +1,57 @@
+<app-root>
+  <img src='{{ logo }}' class='logo' alt="uce-template logo">
+  <h1 class="header">{{ page.title }}</h1>
+  {{ page.content }}
+  <p>Test using a <a is='a-route' href='/other-page.html'>link</a>.</p>
+</app-root>
+
+<script type="module">
+  import {html} from '@uce';
+
+  export default {
+    props: {
+      template: 'homepage',
+      page: {
+        lang: 'en',
+        title: 'Experimental visualization project',
+        description: 'todo'
+      }
+    },
+
+    setup(app) {
+      const template = app.template || 'default';
+      const page = app.page;
+
+      document.title = page.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', page.description);
+
+      return {
+        get page() {
+          page.content = html`<p>test content</p>`;
+          return page;
+        },
+        logo: 'media/2020/10/11/logo.png'
+      };
+    }
+  };
+</script>
+
+<style>
+  app-root {
+    display: block;
+    margin: 1rem auto;
+    padding-bottom: 3rem;
+    width: 80vw;
+    height: auto;
+    background: #fdfdfd;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+</style>
+
+<style scoped>
+  .logo {
+    width: 50px;
+    position: relative;
+    top: 50px;
+  }
+</style>

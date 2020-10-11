@@ -1,0 +1,21 @@
+{
+  "name": "represent",
+  "version": "0.0.1",
+  "description": "Experimental visualization personal project",
+  "keywords": [
+    "visualization"
+  ],
+  "license": "MIT",
+  "author": "Paulmicha",
+  "scripts": {
+    "debug": "serve -p 8080 ./src/static",
+    "serve": "serve -p 8080 ./dist",
+    "build": "npm run build:uce; npm run build:html",
+    "build:uce": "cp node_modules/uce-template/min.js src/static/js/uce-template.js",
+    "build:html": "uce-template --babel ./src/static -o ./dist"
+  },
+  "devDependencies": {
+    "serve": "^11.3.2",
+    "uce-template": "^0.1.36"
+  }
+}
