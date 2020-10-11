@@ -1,0 +1,24 @@
+<!-- <a-route>
+  <a href='{{ href }}'>
+    {{ content }}
+  </a>
+</a-route> -->
+
+<script type="module">
+  import { app } from 'a-route';
+
+  // TODO (wip)
+  app.get('*', (context, next) => {
+    console.log(context);
+    next();
+  });
+
+  export default {
+    setup(href, content) {
+      return {
+        href,
+        content
+      };
+    }
+  };
+</script>
