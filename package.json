@@ -10,8 +10,9 @@
   "scripts": {
     "debug": "serve -p 8080 ./src/static",
     "serve": "serve -p 8080 ./dist",
-    "build": "npm run build:uce; npm run build:html",
+    "build": "npm run build:uce; npm run build:pre-html; npm run build:html",
     "build:uce": "cp node_modules/uce-template/min.js src/static/js/uce-template.js",
+    "build:pre-html": "rm -rf ./dist; cp -r ./src/static ./dist",
     "build:html": "uce-template --babel ./src/static -o ./dist"
   },
   "devDependencies": {
